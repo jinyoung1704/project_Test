@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>MemberList.jsp</title>
+<title>login.jsp</title>
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
 	<hr>
 </div>
 
-<div class="container">
+<%-- <div class="container">
 	<div class="panel-group">
 		<div class="panel panel-default">
 			<div class="panel-heading" id="title">
@@ -62,10 +62,40 @@
 						</c:forEach>
 						
 					</tbody>
-				</table>
-			
-				
+				</table>	
 			</div>
+		</div>
+	</div>
+</div> --%>
+
+<div class="container">
+	<div class="row">
+		<div class="loginbox">
+			<form role="form">
+				<div class="form-group">
+					 
+					<label for="userId">
+						아이디
+					</label>
+					<input type="text" class="form-control" id="userId" />
+				</div>
+				<div class="form-group">
+					 
+					<label for="userPw">
+						Password
+					</label>
+					<input type="password" class="form-control" id="userPw" />
+				</div>
+				<div class="checkbox">
+					 
+					<label>
+						<input type="checkbox" /> 아이디 저장
+					</label>
+				</div> 
+				<button type="submit" class="btn btn-primary">
+					로그인
+				</button>
+			</form>
 		</div>
 	</div>
 </div>
