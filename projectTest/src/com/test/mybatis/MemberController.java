@@ -2,8 +2,10 @@
  	MemberController.java
  	- 사용자 정의 컨트롤러
  =============================*/
-
 package com.test.mybatis;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.test.mybatis.MemberDTO;
 
 @Controller
 public class MemberController
@@ -71,29 +76,35 @@ public class MemberController
 		
 		return view;
 	}
-
 	
-	@RequestMapping(value = "/login.action", method= RequestMethod.GET)
-	public String login(Model model)
+	//로그인 
+  @RequestMapping(value = "/login.action", method= RequestMethod.GET)
+  public String login(Model model) 
+  { 
+	  String view = null;
+  
+	  view = "/WEB-INF/views/Login.jsp";
+  
+	  return view;
+  }
+	
+  @RequestMapping(value = "/userlogin.action" ,method = {RequestMethod.POST, RequestMethod.GET })
+	public String userlogin(Model model, HttpServletRequest request)
 	{
-		String view = null;
+		//System.out.println("test");
+		String view = null; 
+		//IMemberDAO dao = SqlSession.getMapper(IMemberDAO.class);
 		
-		//IMemeberDAO dao = (IMemberDAO)sqlSession.getMapper(); 
-		//위의 방법과 동일한 기능
-		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		// login.jsp 에서 id, pw 넘겨받기 
+		String id = request.getParameter("userId");
+		String pw = request.getParameter("userPw");
 		
-		
-		
-		//model.addAttribute("list", 명단);
-		model.addAttribute("loginList", dao.loginList());
-		
-		view = "/WEB-INF/views/Login.jsp";
-		
+		System.out.println(id + " " +pw);
+	
+		view = "/WEB-INF/views/MemberList.jsp";
 		return view;
-	}
+  }
 }
-
-
 
 
 

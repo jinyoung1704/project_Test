@@ -24,54 +24,11 @@
 	<hr>
 </div>
 
-<%-- <div class="container">
-	<div class="panel-group">
-		<div class="panel panel-default">
-			<div class="panel-heading" id="title">
-				회원 정보 등록
-			</div>
-			
-		
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				회원 정보 출력
-			</div>
-			
-			<div class="panel-body">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>MID</th>
-							<th>NAME</th>
-							<th>TELEPHONE</th>
-							<th>삭제 / 수정</th>
-						</tr>
-					</thead>
-					<tbody>
-						
-						
-						<c:forEach var="list" items="${loginList }">
-						<tr>
-							<td>${list.id }</td>
-							<td>${list.pw }</td>
-							<td>
-								<button type="button" class="btn btn-default btn-xs btnDelete" value="${list.mid }">삭제</button>
-								<button type="button" class="btn btn-default btn-xs btnUpdate" value="${list.mid }">수정</button>
-							</td>
-						</tr>
-						</c:forEach>
-						
-					</tbody>
-				</table>	
-			</div>
-		</div>
-	</div>
-</div> --%>
 
 <div class="container">
 	<div class="row">
 		<div class="loginbox">
-			<form role="form">
+			<form role="form" method="post"  action="userlogin.action">
 				<div class="form-group">
 					 
 					<label for="userId">

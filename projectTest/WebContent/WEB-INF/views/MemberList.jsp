@@ -15,29 +15,6 @@
 
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-
-	$().ready(function()
-	{
-		$(".btnDelete").click(function()
-		{
-			$(location).attr("href","memberdelete.action?mid=" + $(this).val());
-		});
-		
-		$(".btnUpdate").click(function()
-		{
-			$(location).attr("href","memberupdate.action.action?mid=" + $(this).val());
-		});
-
-		$(".btnCancel").click(function()
-		{	
-			$("#name").val() = "";
-		});
-		
-	});
-
-
-</script>
 
 </head>
 <body>
@@ -47,6 +24,7 @@
 	<hr>
 </div>
 
+
 <div class="container">
 	<div class="panel-group">
 		<div class="panel panel-default">
@@ -54,28 +32,6 @@
 				회원 정보 등록
 			</div>
 			
-			<div class="panel-body">
-				<form action="memberinsert.action" method="post" role="form" id="memberForm">
-					<input type="hidden" id="mid" name="mid">
-					<div class="form-group">
-						<label for="name">
-							NAME : 
-						</label>
-						<input type="text" id="name" name="name" class="form-control">
-					</div>
-					
-					<div class="form-group">
-						<label for="telephone">
-							TELEPHONE : 
-						</label>
-						<input type="tel" id="telephone" name="telephone" class="form-control">
-					</div>
-					
-					<button type="submit" class="btn btn-default btn-sm">SUBMIT</button>
-					<button type="button" class="btn btn-default btn-sm btnCancel">CANCEL</button>
-				</form>
-			</div>
-		</div><!-- end panel panel-default  -->
 		
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -93,30 +49,12 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!-- <tr>
-							<td>1</td>
-							<td>임효림</td>
-							<td>010-1111-1111</td>
-							<td>
-								<button type="button" class="btn btn-default btn-xs btnDelete">삭제</button>
-								<button type="button" class="btn btn-default btn-xs btnUpdate">수정</button>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>오진녕</td>
-							<td>010-2222-2222</td>
-							<td>
-								<button type="button" class="btn btn-default btn-xs btnDelete">삭제</button>
-								<button type="button" class="btn btn-default btn-xs btnUpdate">수정</button>
-							</td>
-						</tr> -->
 						
-						<c:forEach var="list" items="${list }">
+						
+						<c:forEach var="list" items="${loginList }">
 						<tr>
-							<td>${list.mid }</td>
-							<td>${list.name }</td>
-							<td>${list.telephone }</td>
+							<td>${list.id }</td>
+							<td>${list.pw }</td>
 							<td>
 								<button type="button" class="btn btn-default btn-xs btnDelete" value="${list.mid }">삭제</button>
 								<button type="button" class="btn btn-default btn-xs btnUpdate" value="${list.mid }">수정</button>
@@ -125,12 +63,7 @@
 						</c:forEach>
 						
 					</tbody>
-				</table>
-				
-				<button type="button" class="btn btn-default btn-sm" disabled="disabled">
-					Count <span class="badge">${count }</span>
-				</button>
-				
+				</table>	
 			</div>
 		</div>
 	</div>
